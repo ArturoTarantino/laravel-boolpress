@@ -2,5 +2,5 @@
 
 @section('content')
     
-    <h1>dashboard here</h1>
+    <h1>Welcome {{ $user->name }}</h1>
 @endsection
