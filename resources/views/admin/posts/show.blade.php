@@ -5,6 +5,19 @@
         <h1>{{ $post->title }}</h1>
         <div class="my-3"><span class="font-weight-bold">Slug:</span> {{ $post->slug }}</div>
         <div class="my-3"><span class="font-weight-bold">Categoria:</span> {{ $post->category ? $post->category->name : 'nessuna' }}</div>
+
+        <div class="my-3">
+            <span class="font-weight-bold">Tags:</span>
+            @forelse ($post->tags as $tag)
+                {{ $tag->name }}
+                @if (!$loop->last)
+                    ,
+                @endif
+            @empty
+                nessuno
+            @endforelse
+        </div>
+
         <p>{{ $post->content }}</p>
 
         <a class="btn btn-primary mb-2" href="{{ route('admin.posts.edit', ['post' => $post->id]) }}">Modifica post</a>
