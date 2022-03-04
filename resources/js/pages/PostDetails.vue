@@ -9,7 +9,9 @@
             </div>
 
             <div class="my-2" v-if="post.tags.length > 0"> 
-                <span v-for="tag in post.tags" :key="tag.id" class="badge bg-success mx-1">{{ tag.name }}</span>
+                <router-link :to="{ name: 'tag-details', params: {slug: tag.slug} }" v-for="tag in post.tags" :key="tag.id" class="badge bg-success mx-1">
+                    {{ tag.name }}
+                </router-link>
             </div>
 
             <p>{{ post.content }}</p>
@@ -22,7 +24,7 @@ export default {
     name: 'PostDetails',
     data: function() {
         return {
-            post: false
+            post: false,
         };
     },
     methods: {
