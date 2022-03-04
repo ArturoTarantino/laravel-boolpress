@@ -14,9 +14,9 @@
                         <!-- <ul class="list-group list-group-flush">
                             <li class="list-group-item">An item</li>
                         </ul> -->
-                        <!-- <div class="card-body">
-                            <a href="#" class="card-link">Card link</a>
-                        </div> -->
+                        <div class="card-body">
+                            <router-link :to="{ name: 'post-details', params: { slug: post.slug } }" class="card-link">Leggi il post</router-link>
+                        </div>
                     </div>
                 </div>
             </div>
