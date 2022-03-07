@@ -114,6 +114,20 @@ class PostController extends Controller
             $form_data['slug'] = $this->getUniqueSlug($form_data['title']);
         }
 
+        if($form_data['image']) {
+
+            // delete old file 
+            if($post->cover) {
+                Storage::delete($post->cover);
+            }
+
+            // upload new file 
+            $img_path = Storage::put('post_covers', $form_data['image']);
+
+            // path to column
+            $form_data['cover'] = $img_path;
+        }
+
         $post->update($form_data);
 
         if(isset($form_data['tags'])) {
@@ -135,6 +149,11 @@ class PostController extends Controller
     {
         $post = Post::findOrFail($id);
         $post->tags()->sync([]);
+
+        if($post->cover) {
+            Storage::delete($post->cover);
+        }
+
         $post->delete();
 
         return redirect()->route('admin.posts.index');
