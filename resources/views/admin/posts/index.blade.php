@@ -8,6 +8,9 @@
                 {{-- single card --}}
                 <div class="col">
                     <div class="card my-3">
+                        @if ($post->cover)
+                            <img class="card-img-top" src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}">
+                        @endif
                         <div class="card-body">
                           <h5 class="card-title">{{ $post->title }}</h5>
                           <p class="card-text">{{ $post->content }}</p>

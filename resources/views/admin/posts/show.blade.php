@@ -18,6 +18,10 @@
             @endforelse
         </div>
 
+        @if ($post->cover)
+            <img class="img-show" src="{{ asset('storage/' . $post->cover) }}" alt="{{ $post->title }}">
+        @endif
+
         <p>{{ $post->content }}</p>
 
         <a class="btn btn-primary mb-2" href="{{ route('admin.posts.edit', ['post' => $post->id]) }}">Modifica post</a>
